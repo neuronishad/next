@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=3 uid="uid://dtsp7ten0bw2x"]
+
+[ext_resource type="Script" path="res://app/components/task_card.gd" id="1_fvaaw"]
+[ext_resource type="Theme" uid="uid://cvwhshmd1bpj4" path="res://next.tres" id="1_xvpx6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pn0aw"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.687215, 0.687215, 0.687215, 0.6)
+shadow_size = 3
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2n8an"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="PanelContainer" type="PanelContainer"]
+custom_minimum_size = Vector2(0, 70)
+theme = ExtResource("1_xvpx6")
+theme_override_styles/panel = SubResource("StyleBoxFlat_pn0aw")
+script = ExtResource("1_fvaaw")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HSplitContainer" type="HSplitContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Description" type="Label" parent="MarginContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Test"
+
+[node name="Priority" type="Label" parent="MarginContainer/HSplitContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_2n8an")
+text = "Critical
+"
+horizontal_alignment = 1
+
+[node name="id" type="Label" parent="MarginContainer/HSplitContainer"]
+visible = false
+layout_mode = 2
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
