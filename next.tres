@@ -2,31 +2,31 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_725cx"]
 bg_color = Color(0.482353, 0.121569, 0.635294, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c6mgh"]
 bg_color = Color(0.482353, 0.121569, 0.635294, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b8qtg"]
 bg_color = Color(0.611765, 0.152941, 0.690196, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hs6es"]
 bg_color = Color(0.482353, 0.121569, 0.635294, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lbwqs"]
 content_margin_left = 5.0
@@ -126,6 +126,7 @@ expand_margin_bottom = 1.0
 
 [resource]
 resource_name = "default"
+Button/font_sizes/font_size = 20
 Button/styles/focus = SubResource("StyleBoxFlat_725cx")
 Button/styles/hover = SubResource("StyleBoxFlat_c6mgh")
 Button/styles/normal = SubResource("StyleBoxFlat_b8qtg")

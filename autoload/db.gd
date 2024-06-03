@@ -16,7 +16,7 @@ func _sdl():
 		CREATE TABLE tasks (
 		id INTEGER PRIMARY KEY AUTOINCREMENT,
 		description VARCHAR(255),
-		priority INT CHECK (priority BETWEEN 0 AND 3),
+		priority REAL CHECK (priority BETWEEN 0 AND 3),
 		created_at INTEGER,
 		deadline INTEGER
 		);

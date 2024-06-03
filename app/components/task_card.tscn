@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dtsp7ten0bw2x"]
+[gd_scene load_steps=12 format=3 uid="uid://dtsp7ten0bw2x"]
 
 [ext_resource type="Script" path="res://app/components/task_card.gd" id="1_fvaaw"]
 [ext_resource type="Theme" uid="uid://cvwhshmd1bpj4" path="res://next.tres" id="1_xvpx6"]
@@ -13,6 +13,32 @@ shadow_color = Color(0.687215, 0.687215, 0.687215, 0.6)
 shadow_size = 3
 shadow_offset = Vector2(0, 3)
 
+[sub_resource type="Gradient" id="Gradient_1g56r"]
+offsets = PackedFloat32Array(0, 0.7)
+colors = PackedColorArray(0.611765, 0.152941, 0.690196, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xwsk5"]
+gradient = SubResource("Gradient_1g56r")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nhgcs"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+texture = SubResource("GradientTexture1D_xwsk5")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_64dki"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eqqpp"]
+bg_color = Color(0.82606, 0.82606, 0.82606, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kjqcf"]
+bg_color = Color(0.827451, 0.827451, 0.827451, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xfnku"]
+bg_color = Color(0.827451, 0.827451, 0.827451, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2n8an"]
 content_margin_left = 5.0
 content_margin_top = 5.0
@@ -24,40 +50,66 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [node name="PanelContainer" type="PanelContainer"]
-custom_minimum_size = Vector2(0, 70)
+custom_minimum_size = Vector2(0, 90)
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 47.0
+grow_horizontal = 2
 theme = ExtResource("1_xvpx6")
 theme_override_styles/panel = SubResource("StyleBoxFlat_pn0aw")
 script = ExtResource("1_fvaaw")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="Next" type="Label" parent="."]
 layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 27
+theme_override_styles/normal = SubResource("StyleBoxTexture_nhgcs")
+text = "Next?"
+vertical_alignment = 1
+
+[node name="Task" type="Button" parent="."]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_64dki")
+theme_override_styles/hover = SubResource("StyleBoxFlat_eqqpp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_kjqcf")
+theme_override_styles/focus = SubResource("StyleBoxFlat_xfnku")
+
+[node name="MarginContainer" type="MarginContainer" parent="Task"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="HSplitContainer" type="HSplitContainer" parent="MarginContainer"]
+[node name="HSplitContainer" type="HSplitContainer" parent="Task/MarginContainer"]
 layout_mode = 2
 
-[node name="Description" type="Label" parent="MarginContainer/HSplitContainer"]
+[node name="Description" type="Label" parent="Task/MarginContainer/HSplitContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 18
 text = "Test"
 
-[node name="Priority" type="Label" parent="MarginContainer/HSplitContainer"]
+[node name="Priority" type="Label" parent="Task/MarginContainer/HSplitContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 17
 theme_override_styles/normal = SubResource("StyleBoxFlat_2n8an")
 text = "Critical
 "
 horizontal_alignment = 1
 
-[node name="id" type="Label" parent="MarginContainer/HSplitContainer"]
+[node name="id" type="Label" parent="Task/MarginContainer/HSplitContainer"]
 visible = false
 layout_mode = 2
 
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="button_down" from="Task" to="." method="_on_task_button_down"]
+[connection signal="button_up" from="Task" to="." method="_on_task_button_up"]

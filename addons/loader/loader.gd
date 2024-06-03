@@ -1,6 +1,6 @@
 extends Node
 
-var loading_screen = preload("loading_screen.tscn").instantiate(1)
+var loading_screen = preload("loading_screen.tscn").instantiate()
 
 func load_data(node: Node, _load_data: Callable):
 	node.get_parent().add_child(loading_screen)
@@ -9,4 +9,3 @@ func load_data(node: Node, _load_data: Callable):
 	node.visible = true
 	node.get_parent().remove_child(loading_screen)
 	loading_screen.free()
-	

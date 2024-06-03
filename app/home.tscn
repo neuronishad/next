@@ -1,10 +1,60 @@
-[gd_scene load_steps=4 format=3 uid="uid://c35b5711pg3qn"]
+[gd_scene load_steps=11 format=3 uid="uid://c35b5711pg3qn"]
 
 [ext_resource type="Script" path="res://app/home.gd" id="1_p33fm"]
 [ext_resource type="Theme" uid="uid://cvwhshmd1bpj4" path="res://next.tres" id="2_puho6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_drtv8"]
 bg_color = Color(0.6, 0.6, 0.6, 0.2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ivnny"]
+content_margin_left = 3.0
+content_margin_top = 3.0
+content_margin_right = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(0.611765, 0.152941, 0.690196, 1)
+corner_radius_top_right = 50
+expand_margin_right = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_imblg"]
+content_margin_top = 10.0
+bg_color = Color(1, 1, 1, 1)
+border_width_top = 1
+border_color = Color(0.878431, 0.878431, 0.878431, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rfsux"]
+bg_color = Color(0.258824, 0.258824, 0.258824, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r4mu0"]
+bg_color = Color(0.380392, 0.380392, 0.380392, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tal3e"]
+bg_color = Color(0.380392, 0.380392, 0.380392, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vcoap"]
+bg_color = Color(0.380392, 0.380392, 0.380392, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ba108"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.611765, 0.152941, 0.690196, 1)
 
 [node name="Home" type="Control"]
 layout_mode = 3
@@ -37,15 +87,17 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_puho6")
 theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 150
 theme_override_constants/margin_right = 20
 
 [node name="Bg" type="PanelContainer" parent="AddTask/MarginContainer"]
 layout_mode = 2
-size_flags_vertical = 4
+size_flags_vertical = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="AddTask/MarginContainer/Bg"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 0
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
@@ -72,20 +124,25 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.956863, 0.262745, 0.211765, 1)
 text = "Please enter task description"
 
-[node name="Priority" type="OptionButton" parent="AddTask/MarginContainer/Bg/MarginContainer/AddTaskContainer"]
+[node name="Prioriry" type="VBoxContainer" parent="AddTask/MarginContainer/Bg/MarginContainer/AddTaskContainer"]
 layout_mode = 2
-item_count = 4
-selected = 0
-allow_reselect = true
-popup/item_0/text = "Select Priority"
-popup/item_0/id = 0
-popup/item_0/disabled = true
-popup/item_1/text = "Critical"
-popup/item_1/id = 1
-popup/item_2/text = "Significant"
-popup/item_2/id = 2
-popup/item_3/text = "Moderate"
-popup/item_3/id = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="AddTask/MarginContainer/Bg/MarginContainer/AddTaskContainer/Prioriry"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 10
+theme_override_styles/normal = SubResource("StyleBoxFlat_ivnny")
+text = "Select Priority
+"
+
+[node name="Box" type="PanelContainer" parent="AddTask/MarginContainer/Bg/MarginContainer/AddTaskContainer/Prioriry"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_imblg")
+
+[node name="List" type="HBoxContainer" parent="AddTask/MarginContainer/Bg/MarginContainer/AddTaskContainer/Prioriry/Box"]
+layout_mode = 2
 
 [node name="PriorityError" type="Label" parent="AddTask/MarginContainer/Bg/MarginContainer/AddTaskContainer"]
 visible = false
@@ -102,12 +159,18 @@ theme_override_constants/separation = 50
 custom_minimum_size = Vector2(0, 35)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
 text = "Save
 "
 
 [node name="Cancel" type="Button" parent="AddTask/MarginContainer/Bg/MarginContainer/AddTaskContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_rfsux")
+theme_override_styles/hover = SubResource("StyleBoxFlat_r4mu0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tal3e")
+theme_override_styles/focus = SubResource("StyleBoxFlat_vcoap")
 text = "Cancel"
 
 [node name="Bg" type="PanelContainer" parent="."]
@@ -121,36 +184,55 @@ grow_vertical = 2
 [node name="MarginContainer" type="MarginContainer" parent="Bg"]
 layout_mode = 2
 theme_override_constants/margin_left = 30
-theme_override_constants/margin_top = 30
+theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 30
 theme_override_constants/margin_bottom = 50
 
-[node name="VSplitContainer" type="VSplitContainer" parent="Bg/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Bg/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 10
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Bg/MarginContainer/VSplitContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="Bg/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ba108")
+
+[node name="Label" type="Label" parent="Bg/MarginContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Tasks"
+
+[node name="Count" type="Label" parent="Bg/MarginContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "24"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Bg/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="Bg/MarginContainer/VSplitContainer/ScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Bg/MarginContainer/VBoxContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_right = 5
 
-[node name="TaskContainer" type="VBoxContainer" parent="Bg/MarginContainer/VSplitContainer/ScrollContainer/MarginContainer"]
+[node name="TaskContainer" type="VBoxContainer" parent="Bg/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 15
 
-[node name="Add" type="Button" parent="Bg/MarginContainer/VSplitContainer"]
-custom_minimum_size = Vector2(0, 40)
+[node name="Add" type="Button" parent="Bg/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-size_flags_vertical = 8
+size_flags_vertical = 4
+action_mode = 0
 text = "Add +"
 
 [connection signal="pressed" from="AddTask/MarginContainer/Bg/MarginContainer/AddTaskContainer/HBoxContainer/Save" to="." method="_on_save_pressed"]
 [connection signal="pressed" from="AddTask/MarginContainer/Bg/MarginContainer/AddTaskContainer/HBoxContainer/Cancel" to="." method="_on_cancel_pressed"]
-[connection signal="pressed" from="Bg/MarginContainer/VSplitContainer/Add" to="." method="_on_add_pressed"]
+[connection signal="pressed" from="Bg/MarginContainer/VBoxContainer/Add" to="." method="_on_add_pressed"]
+[connection signal="toggled" from="Bg/MarginContainer/VBoxContainer/Add" to="." method="_on_add_toggled"]

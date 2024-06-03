@@ -28,13 +28,13 @@ Events="*res://autoload/events.gd"
 
 window/size/viewport_width=400
 window/size/viewport_height=600
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/handheld/orientation=1
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dataloader/plugin.cfg", "res://addons/godot-sqlite/plugin.cfg")
+enabled=PackedStringArray("res://addons/godot-sqlite/plugin.cfg")
 
 [input]
 
@@ -48,3 +48,4 @@ press={
 
 renderer/rendering_method="mobile"
 textures/vram_compression/import_etc2_astc=true
+viewport/hdr_2d=true
